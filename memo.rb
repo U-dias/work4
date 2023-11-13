@@ -29,7 +29,8 @@ while true
  puts"CSVファイルの編集は[2]"
  puts"終了は[end]"
  mode=gets.chomp
-
+ 
+ 
  if mode=="1"
     memos.push(make_memo)
     made_memo(memos)
