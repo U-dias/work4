@@ -37,7 +37,6 @@ memos=[]
 while true
  puts"新規作成は[1]"
  puts"CSVファイルの編集は[2]"
- puts"ファイル名の変更は[3]"
  puts"終了は[end]"
  mode=gets.chomp
  
@@ -45,12 +44,11 @@ while true
  if mode=="1"
     memos.push(make_memo)
     made_memo(memos)
+    file_name
  elsif mode=="2"
     memos.push(make_memo)
     add_memo(memos)
- elsif mode=="3"
-    file_name
- elsif mode!="1" && mode!="2" && mode!="3" && mode!="end"
+ elsif mode!="1" && mode!="2" && mode!="end"
     puts"不明な入力です。再入力して下さい。"
  else
     mode=="end"
