@@ -4,23 +4,20 @@ require "csv"
 def make_memo
  print"出力するコンテンツ:"
  contents=gets.chomp
- {"contents"=>contents}
+ # {"contents"=>contents}
 end
 
 #ファイルの名前
 def file_name
  print"ファイル名:"
- name=gets.chomp #ここまでは問題なさそう
+ name=gets.chomp 
  File.rename("memo.csv", name+".csv")
 end
 
 # 新規ファイルで出力
 def made_memo(memo)
- # print"ファイル名:"
- # name=gets.chomp
- # File.rename("memo.csv",name.csv)
  CSV.open("memo.csv", "w") do |csv|
-  csv<<[memo]
+  csv<< memo
  end
 end
 
