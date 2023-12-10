@@ -7,7 +7,7 @@ def make_memo
  # {"contents"=>contents}
 end
 
-#ファイルの名前
+#ファイルの名前変更
 def file_name
  print"ファイル名:"
  name=gets.chomp 
@@ -23,11 +23,18 @@ end
 
 # ファイルの末尾に追加
 def add_memo(memo)
- puts "内容:"
- CSV.open("memo.csv", "a" ) do |csv|
- csv<<[memo]
+ print "ファイル名:"
+ file=gets.chomp
+ if FileTest.exist?( file + ".csv" ) then
+    CSV.open( file + ".csv", "a" ) do |csv|
+    csv<< memo
  end
-end
+ else
+    FileTest.exist?( file)
+    print "ファイルが見つかりません"
+    
+ end
+ end
 
 memos=[]
 
