@@ -2,8 +2,8 @@ require "csv"
 
 # コンソールで入力
 def make_memo
- print"出力するコンテンツ:"
- contents=gets.chomp
+ print"出力するコンテンツ(Ctrl+Dで入力終了):"
+ contents=STDIN.read#gets.chomp
  # {"contents"=>contents}
 end
 
