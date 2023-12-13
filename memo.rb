@@ -3,15 +3,19 @@ require "csv"
 # コンソールで入力
 def make_memo
  print"出力するコンテンツ(Ctrl+Dで入力終了):"
- contents=STDIN.read#gets.chomp
- # {"contents"=>contents}
+ contents=STDIN.read
 end
 
-#ファイルの名前変更
+#ファイルの名前
 def file_name
  print"ファイル名:"
- name=gets.chomp 
- File.rename("memo.csv", name+".csv")
+ name=gets.chomp
+ if FileTest.exist?(name + ".csv") then
+    print "既にファイルがあります。"
+    return
+ else
+    File.rename("memo.csv", name+".csv")
+end
 end
 
 # 新規ファイルで出力
@@ -32,7 +36,6 @@ def add_memo(memo)
  else
     FileTest.exist?( file)
     print "ファイルが見つかりません"
-    
  end
  end
 
@@ -49,9 +52,11 @@ while true
     memos.push(make_memo)
     made_memo(memos)
     file_name
+    memos.clear
  elsif mode=="2"
     memos.push(make_memo)
     add_memo(memos)
+    memos.clear
  elsif mode!="1" && mode!="2" && mode!="end"
     puts"不明な入力です。再入力して下さい。"
  else
